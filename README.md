@@ -77,10 +77,22 @@ This new type should have a new REST endpoint created for it. This new endpoint 
 the fully filled out ReportingStructure for the specified employeeId. The values should be computed on the fly and will 
 not be persisted.
 
+#### Note:
+    The above structure seems tree structure, however, while calculating total number of reports, 
+    I have assumed that it could contain cycles. Hence, appropriate data structure is used.
+    Also, if the structure contains any bad employee id, it will be skipped in counting.
+
 ### Task 2
 Create a new type, Compensation. A Compensation has the following fields: employee, salary, and effectiveDate. Create 
 two new Compensation REST endpoints. One to create and one to read by employeeId. These should persist and query the 
 Compensation from the persistence layer.
+
+#### Note: 
+To create compensation, PUT method is used as POST is not idempotent. Therefore, below behaviour will follow
+    
+    If compensation does not exist for an employee id, new compensation is created.
+    If compensation exists for an employee id, compensation is updated.
+
 
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by Github and Bitbucket.

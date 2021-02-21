@@ -1,8 +1,13 @@
 package com.mindex.challenge.data;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document
 public class Employee {
+    @Id
     private String employeeId;
     private String firstName;
     private String lastName;
@@ -59,5 +64,16 @@ public class Employee {
 
     public void setDirectReports(List<Employee> directReports) {
         this.directReports = directReports;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId='" + employeeId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", department='" + department + '\'' +
+                '}';
     }
 }
